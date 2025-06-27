@@ -35,6 +35,9 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Deploy docs with mike
+        env:
+          # this token is provided automatically by Actions
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
         run: |
           VERSION=${GITHUB_REF#refs/tags/}
           mike deploy --branch main --update-aliases "$VERSION" latest
