@@ -36,11 +36,24 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
+      - name: Dump $VERSION and list existing versions
+        run: |
+          echo "GITHUB_REF = $GITHUB_REF"
+          VERSION=${GITHUB_REF#refs/tags/}
+          echo "Derived VERSION = '$VERSION'"
+          # show all versions & aliases that Mike knows about
+          mike list \
+            --branch gh-pages \
+            --deploy-prefix version
+
       - name: Deploy docs with mike
         env:
           # this token is provided automatically by Actions
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
         run: |
+          set -euxo pipefail
+          VERSION=${GITHUB_REF#refs/tags/}
+          echo "Deploying docs for version $VERSION …"
           VERSION=${GITHUB_REF#refs/tags/}
           mike deploy "$VERSION" latest --push --update-aliases --deploy-prefix version
           mike set-default latest  --push
