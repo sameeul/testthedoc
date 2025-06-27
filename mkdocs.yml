@@ -1,0 +1,17 @@
+site_name: Documentation Demo
+theme:
+  name: material
+plugins:
+  - search
+markdown_extensions:
+  - tables
+  - fenced_code
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - attr_list
+  - md_in_html
+nav:
+  - Home: index.md
