@@ -43,4 +43,4 @@ jobs:
         run: |
           VERSION=${GITHUB_REF#refs/tags/}
           mike deploy "$VERSION" latest --push --update-aliases --deploy-prefix version
-          mike set-default latest  --push --deploy-prefix version
+          mike set-default latest  --push
