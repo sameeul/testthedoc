@@ -42,4 +42,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
         run: |
           VERSION=${GITHUB_REF#refs/tags/}
-          mike deploy --push --update-aliases "$VERSION" latest --redirect-root latest
+          mike deploy --push --update-aliases "$VERSION" latest
+          mike set-default latest
