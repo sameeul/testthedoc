@@ -1,5 +1,7 @@
 name: Deploy Versioned MkDocs to GitHub Pages
-
+permissions:
+  contents: write    # for git pushes
+  pages: write       # if you’re using the newer Pages API
 on:
   push:
     tags:
