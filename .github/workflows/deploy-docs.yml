@@ -55,5 +55,5 @@ jobs:
           VERSION=${GITHUB_REF#refs/tags/}
           echo "Deploying docs for version $VERSION …"
           VERSION=${GITHUB_REF#refs/tags/}
-          mike deploy --push --update-aliases "$VERSION" latest --deploy-prefix version
-          mike set-default latest --push --allow-undefined --deploy-prefix version
+          mike deploy --push --update-aliases "$VERSION" latest
+          mike set-default latest --push --allow-undefined
